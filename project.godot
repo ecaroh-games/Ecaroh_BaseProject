@@ -11,13 +11,13 @@ config_version=5
 [application]
 
 config/name="BaseProject"
-run/main_scene="res://SCENES/Main/Game.tscn"
+run/main_scene="res://SCENES/LoadScreen/LoadScreen.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 config/icon="res://ASSETS/ICONS/load.png"
 
 [autoload]
 
-ParticleCache="*res://PARTICLES/particle_cache.gd"
+SceneChanger="*res://scene_changer.gd"
 
 [layer_names]
 

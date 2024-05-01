@@ -20,6 +20,7 @@ shape = SubResource("RectangleShape2D_7qkgo")
 [node name="Hurtbox" parent="." instance=ExtResource("2_clulf")]
 
 [node name="HealthComponent" parent="." instance=ExtResource("4_k2wsy")]
+hp = 12
 
 [node name="HealthBarComponent" parent="." instance=ExtResource("5_s45by")]
 

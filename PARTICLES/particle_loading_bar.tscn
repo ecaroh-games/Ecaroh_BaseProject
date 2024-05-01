@@ -1,0 +1,56 @@
+[gd_scene load_steps=7 format=3 uid="uid://d1igd40k7bqhn"]
+
+[ext_resource type="Texture2D" uid="uid://demixoda24rv5" path="res://icon.svg" id="1_vq833"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_87l05"]
+atlas = ExtResource("1_vq833")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_18i4e"]
+atlas = ExtResource("1_vq833")
+region = Rect2(64, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u0wio"]
+atlas = ExtResource("1_vq833")
+region = Rect2(64, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cddsd"]
+atlas = ExtResource("1_vq833")
+region = Rect2(32, 64, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3gayx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_87l05")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_18i4e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u0wio")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cddsd")
+}],
+"loop": true,
+"name": &"default",
+"speed": 60.0
+}]
+
+[node name="ParticleLoadingBar" type="ProgressBar"]
+offset_right = 167.0
+offset_bottom = 27.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(83, -26)
+sprite_frames = SubResource("SpriteFrames_3gayx")
+autoplay = "default"
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 29.0
+offset_right = 160.0
+offset_bottom = 52.0
+text = "Preloading Particles"
