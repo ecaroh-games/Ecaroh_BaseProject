@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://ixpg2as2wesf"]
+
+[ext_resource type="Texture2D" uid="uid://cef80rwgrl7dc" path="res://ASSETS/ICONS/glass-heart.png" id="1_ojhwj"]
+
+[node name="HeartBase" type="Sprite2D"]
+scale = Vector2(0.69, 0.69)
+texture = ExtResource("1_ojhwj")

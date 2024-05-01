@@ -1,0 +1,23 @@
+[gd_resource type="ParticleProcessMaterial" load_steps=3 format=3 uid="uid://ceyt0nu270b7s"]
+
+[sub_resource type="Curve" id="Curve_4enuq"]
+_data = [Vector2(0, 0.420652), 0.0, 0.0, 0, 0, Vector2(0.0782123, 1), 0.0, 0.0, 0, 0, Vector2(0.664805, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.362637), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_x2xq6"]
+curve = SubResource("Curve_4enuq")
+
+[resource]
+particle_flag_disable_z = true
+inherit_velocity_ratio = -0.23
+direction = Vector3(-1, 0, 0)
+spread = 112.17
+initial_velocity_min = 42.0
+initial_velocity_max = 123.0
+gravity = Vector3(0, -333, 0)
+damping_min = 0.5
+damping_max = 6.9
+scale_min = 0.23
+scale_curve = SubResource("CurveTexture_x2xq6")
+turbulence_enabled = true
+turbulence_noise_strength = 9.64

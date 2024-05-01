@@ -1,0 +1,29 @@
+[gd_scene load_steps=6 format=3 uid="uid://b13segvvyuifs"]
+
+[ext_resource type="Script" path="res://Player/Player.gd" id="1_iyxcx"]
+[ext_resource type="Texture2D" uid="uid://b66bh8xvv3wug" path="res://ASSETS/ICONS/ecaroh_icon3.png" id="2_tt1i1"]
+[ext_resource type="PackedScene" uid="uid://cxl2ibjykfdtb" path="res://COMPONENTS/HitboxHurtbox/Hurtbox.tscn" id="3_rp85m"]
+[ext_resource type="PackedScene" uid="uid://dnt0bg1kjmh46" path="res://COMPONENTS/HitboxHurtbox/Hitbox_Attack.tscn" id="4_ahl1x"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_oo8pc"]
+radius = 23.0
+
+[node name="Player" type="Node2D"]
+script = ExtResource("1_iyxcx")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_tt1i1")
+offset = Vector2(0, -13)
+
+[node name="Hurtbox" parent="." instance=ExtResource("3_rp85m")]
+
+[node name="CollisionShape2D" parent="Hurtbox" index="0"]
+shape = SubResource("CircleShape2D_oo8pc")
+
+[node name="Hitbox" parent="." instance=ExtResource("4_ahl1x")]
+permanent = true
+
+[connection signal="hit_target" from="Hitbox" to="." method="_on_hitbox_hit_target"]
+
+[editable path="Hurtbox"]
+[editable path="Hitbox"]

@@ -1,0 +1,36 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[application]
+
+config/name="BaseProject"
+run/main_scene="res://SCENES/Main/Game.tscn"
+config/features=PackedStringArray("4.2", "GL Compatibility")
+config/icon="res://ASSETS/ICONS/load.png"
+
+[autoload]
+
+ParticleCache="*res://PARTICLES/particle_cache.gd"
+
+[layer_names]
+
+2d_render/layer_1="Ground"
+2d_physics/layer_1="GROUND+WALLS"
+2d_physics/layer_9="Player (physics)"
+2d_physics/layer_10="Player_Hitbox (attack)"
+2d_physics/layer_11="Player_Hurtbox"
+2d_physics/layer_13="Enemy (physics)"
+2d_physics/layer_14="Enemy_Hitbox (attack)"
+2d_physics/layer_15="Enemy_Hurtbox"
+
+[rendering]
+
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"

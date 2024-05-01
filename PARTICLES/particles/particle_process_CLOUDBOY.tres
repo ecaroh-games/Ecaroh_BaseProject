@@ -1,0 +1,27 @@
+[gd_resource type="ParticleProcessMaterial" load_steps=3 format=3 uid="uid://fu54uehmtsg"]
+
+[sub_resource type="Curve" id="Curve_csfxl"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.664805, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.362637), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_q2mkg"]
+curve = SubResource("Curve_csfxl")
+
+[resource]
+lifetime_randomness = 0.8
+particle_flag_disable_z = true
+emission_shape_scale = Vector3(1, 0, 1)
+emission_shape = 3
+emission_box_extents = Vector3(42, 1, 1)
+direction = Vector3(0, 1, 0)
+spread = 0.0
+initial_velocity_min = 196.32
+initial_velocity_max = 196.32
+gravity = Vector3(0, 123, 0)
+damping_min = 0.5
+damping_max = 23.0
+scale_max = 2.0
+scale_curve = SubResource("CurveTexture_q2mkg")
+anim_speed_min = 1.0
+anim_speed_max = 2.0
+turbulence_noise_scale = 2.787

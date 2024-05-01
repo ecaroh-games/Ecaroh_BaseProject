@@ -1,0 +1,29 @@
+[gd_scene load_steps=7 format=3 uid="uid://dxq6upak5fu7r"]
+
+[ext_resource type="Texture2D" uid="uid://dynbyofceqhvo" path="res://ASSETS/ICONS/bat.png" id="1_dgkmx"]
+[ext_resource type="Script" path="res://ENTITIES/ENEMIES/Enemy1/Enemy1.gd" id="1_xu1aq"]
+[ext_resource type="PackedScene" uid="uid://cxl2ibjykfdtb" path="res://COMPONENTS/HitboxHurtbox/Hurtbox.tscn" id="2_clulf"]
+[ext_resource type="PackedScene" uid="uid://447y2kvjhhfm" path="res://COMPONENTS/HealthComponent/HealthComponent.tscn" id="4_k2wsy"]
+[ext_resource type="PackedScene" uid="uid://wpftgei48gqn" path="res://COMPONENTS/HealthBarComponent/HealthBarComponent.tscn" id="5_s45by"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7qkgo"]
+
+[node name="Enemy1" type="CharacterBody2D"]
+script = ExtResource("1_xu1aq")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_dgkmx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_7qkgo")
+
+[node name="Hurtbox" parent="." instance=ExtResource("2_clulf")]
+
+[node name="HealthComponent" parent="." instance=ExtResource("4_k2wsy")]
+
+[node name="HealthBarComponent" parent="." instance=ExtResource("5_s45by")]
+
+[connection signal="got_hit" from="Hurtbox" to="HealthComponent" method="_on_hurtbox_got_hit"]
+[connection signal="died" from="HealthComponent" to="." method="_on_health_component_died"]
+[connection signal="hp_changed" from="HealthComponent" to="HealthBarComponent" method="_on_health_component_hp_changed"]
+[connection signal="hp_set" from="HealthComponent" to="HealthBarComponent" method="_on_health_component_hp_set"]
