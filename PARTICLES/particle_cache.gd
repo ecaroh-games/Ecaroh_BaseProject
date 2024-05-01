@@ -1,14 +1,12 @@
 extends CanvasLayer
 
-var frame:int = 0
-var total_frames:int = 23
 var loading:bool = false
 
 var material_paths = []
 var materials = []
 var current_material_num := 0
-var temp_texture = preload("res://ASSETS/ICONS/allied-star.png")
-var temp_material = preload("res://PARTICLES/new_canvas_item_material.tres")
+#var temp_texture = preload("res://ASSETS/ICONS/allied-star.png")
+#var temp_material = preload("res://PARTICLES/new_canvas_item_material.tres")
 
 var asyncLoadingPath:String
 
@@ -17,11 +15,9 @@ var asyncLoadingPath:String
 var progress = []
 
 func _ready() -> void:
-	#load_bar = load_bar_scene.instantiate()
-	#load_bar.position = Vector2(123, 123)
-	#add_child(load_bar)
 	process_mode = PROCESS_MODE_ALWAYS
 	get_particle_folder()
+	await get_tree().create_timer(1.123).timeout
 	load_next_particle()
 
 func get_particle_folder() -> void:
@@ -53,40 +49,42 @@ func instantiate_next_particle() -> void:
 	var material = ResourceLoader.load_threaded_get(asyncLoadingPath)
 	var particles_instance:GPUParticles2D = GPUParticles2D.new() as GPUParticles2D
 	particles_instance.process_material = material
-	particles_instance.texture = temp_texture
-	particles_instance.material = temp_material
+	#particles_instance.texture = temp_texture
+	#particles_instance.material = temp_material
 	particles_instance.position = Vector2(123, 123)
 	particles_instance.one_shot = true
-	particles_instance.modulate = Color(1, 1, 1, 1)
+	
+	# i find that setting this to 0 will not trigger the shader to compile...
+	# recommend hiding the GPU particles behind a canvas layer
+	#particles_instance.modulate = Color(1, 1, 1, 0)
 	particles_instance.emitting = true
+	await get_tree().create_timer(0.123).timeout
 	self.add_child(particles_instance)
 			
 
 func _physics_process(delta):
 	if loading:
 		ResourceLoader.load_threaded_get_status(asyncLoadingPath, progress)
-		var big_chunk = float(current_material_num) / (material_paths.size() -1)
-		var small_chunk = (float(progress[0]) / (material_paths.size() -1)) 
-		load_bar.value = (big_chunk + small_chunk) * 100
-		#print(ResourceLoader.load_threaded_get_status(asyncLoadingPath))
+		if load_bar != null:
+			var big_chunk = float(current_material_num+1) / (material_paths.size())
+			var small_chunk = 0#float(progress[0]) / material_paths.size()
+			load_bar.value = (big_chunk + small_chunk) * 100
+
 		if (ResourceLoader.load_threaded_get_status(asyncLoadingPath) == ResourceLoader.THREAD_LOAD_LOADED):
+			
+			#instantiates the particle  -- this is when the lag spike occurs
 			instantiate_next_particle()
-			if current_material_num >= material_paths.size()-1:
-				print("done loading " + str(current_material_num))
+			
+			# small pause for load bar readability
+			await get_tree().create_timer(0.123).timeout
+			
+			if current_material_num >= material_paths.size() - 1:
+				print("done loading " + str( material_paths.size() ))
 				loading = false
+				load_bar.set_message("done")
+				await get_tree().create_timer(1.123).timeout
 				set_physics_process(false)
-				await get_tree().create_timer(0.23).timeout
 				load_bar.queue_free()
 			else:
 				current_material_num += 1
-				await get_tree().create_timer(0.1).timeout
 				load_next_particle()
-				
-	#var frame_ratio = float(frame) / total_frames
-	#frame += 1
-	#if frame > total_frames:
-		#print("done preloading")
-		#set_physics_process(false)
-
-func get_frame() -> int:
-	return frame

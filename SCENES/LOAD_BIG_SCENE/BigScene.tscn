@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://bcmpycfadf31i"]
+[gd_scene load_steps=39 format=3 uid="uid://bcmpycfadf31i"]
 
 [ext_resource type="Texture2D" uid="uid://56dpgg3rukb8" path="res://ASSETS/SPRITES/PRELOAD_TEST/starmap_2020_4k.png" id="1_11elo"]
 [ext_resource type="Script" path="res://SCENES/LOAD_BIG_SCENE/BigScene.gd" id="1_a3u6k"]
@@ -6,9 +6,21 @@
 [ext_resource type="Texture2D" uid="uid://bvfehuc50r3nx" path="res://ASSETS/ICONS/allied-star.png" id="3_o2wrw"]
 [ext_resource type="Material" uid="uid://mif2kjg1bbjm" path="res://PARTICLES/new_canvas_item_material.tres" id="4_ko1yg"]
 [ext_resource type="Texture2D" uid="uid://cbacmno3jeqjo" path="res://ASSETS/ICONS/amplitude.png" id="5_5le17"]
+[ext_resource type="Texture2D" uid="uid://dmslby5cgn3cq" path="res://ASSETS/ICONS/anvil.png" id="5_wfqig"]
 [ext_resource type="Material" uid="uid://b213y7gvwjgn8" path="res://PARTICLES/particles/Particles_splash.tres" id="7_osu0o"]
 [ext_resource type="Texture2D" uid="uid://demixoda24rv5" path="res://icon.svg" id="8_84mjh"]
+[ext_resource type="Material" uid="uid://rvpbhgmxyq6j" path="res://PARTICLES/particles/extra (1).tres" id="8_q7w6n"]
+[ext_resource type="Material" uid="uid://bw244isurl7vo" path="res://PARTICLES/particles/extra (2).tres" id="9_f6v6q"]
 [ext_resource type="Script" path="res://SCENES/LOAD_BIG_SCENE/TestNode.gd" id="9_mlq2l"]
+[ext_resource type="Texture2D" uid="uid://dtycdvnirkav7" path="res://ASSETS/ICONS/fish icon7.png" id="10_i6hoi"]
+[ext_resource type="Material" uid="uid://ch31h3wsmfbfc" path="res://PARTICLES/particles/extra (3).tres" id="11_r6st6"]
+[ext_resource type="Texture2D" uid="uid://4kxnugi8xjpy" path="res://ASSETS/ICONS/fire-shield.png" id="12_hawrs"]
+[ext_resource type="Material" uid="uid://dmi2gk6damywl" path="res://PARTICLES/particles/extra (4).tres" id="13_4ucya"]
+[ext_resource type="Texture2D" uid="uid://df2heegkytctt" path="res://ASSETS/ICONS/auto-repair.png" id="14_x5ya0"]
+[ext_resource type="Material" uid="uid://nygxj2ibwftg" path="res://PARTICLES/particles/extra (5).tres" id="15_qno4f"]
+[ext_resource type="Material" uid="uid://mskmjwkwx5q6" path="res://PARTICLES/particles/extra (6).tres" id="17_bygy4"]
+[ext_resource type="Texture2D" uid="uid://bb264b7ma825" path="res://ASSETS/ICONS/apple-core.png" id="18_ssgl6"]
+[ext_resource type="Material" uid="uid://duv1pyf2vkojw" path="res://PARTICLES/particles/extra (7).tres" id="19_f860v"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1nx6s"]
 atlas = ExtResource("8_84mjh")
@@ -822,6 +834,9 @@ scale = Vector2(0.1, 0.1)
 texture = ExtResource("1_11elo")
 centered = false
 
+[node name="TileMap" type="TileMap" parent="."]
+format = 2
+
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CanvasLayer"]
@@ -838,6 +853,55 @@ position = Vector2(337, 402)
 amount = 123
 process_material = ExtResource("2_t6la5")
 texture = ExtResource("5_5le17")
+
+[node name="GPUParticles2D3" type="GPUParticles2D" parent="CanvasLayer"]
+material = ExtResource("4_ko1yg")
+position = Vector2(273, 145)
+amount = 123
+process_material = ExtResource("8_q7w6n")
+texture = ExtResource("5_5le17")
+
+[node name="GPUParticles2D4" type="GPUParticles2D" parent="CanvasLayer"]
+material = ExtResource("4_ko1yg")
+position = Vector2(534, 116)
+amount = 123
+process_material = ExtResource("9_f6v6q")
+texture = ExtResource("10_i6hoi")
+
+[node name="GPUParticles2D5" type="GPUParticles2D" parent="CanvasLayer"]
+material = ExtResource("4_ko1yg")
+position = Vector2(802, 130)
+amount = 123
+process_material = ExtResource("11_r6st6")
+texture = ExtResource("12_hawrs")
+
+[node name="GPUParticles2D6" type="GPUParticles2D" parent="CanvasLayer"]
+material = ExtResource("4_ko1yg")
+position = Vector2(908, 404)
+amount = 123
+process_material = ExtResource("13_4ucya")
+texture = ExtResource("14_x5ya0")
+
+[node name="GPUParticles2D7" type="GPUParticles2D" parent="CanvasLayer"]
+material = ExtResource("4_ko1yg")
+position = Vector2(501, 519)
+amount = 123
+process_material = ExtResource("15_qno4f")
+texture = ExtResource("5_wfqig")
+
+[node name="GPUParticles2D8" type="GPUParticles2D" parent="CanvasLayer"]
+material = ExtResource("4_ko1yg")
+position = Vector2(94, 430)
+amount = 123
+process_material = ExtResource("17_bygy4")
+texture = ExtResource("18_ssgl6")
+
+[node name="GPUParticles2D9" type="GPUParticles2D" parent="CanvasLayer"]
+material = ExtResource("4_ko1yg")
+position = Vector2(82, 150)
+amount = 123
+process_material = ExtResource("19_f860v")
+texture = ExtResource("3_o2wrw")
 
 [node name="GPUParticles2D2" type="GPUParticles2D" parent="CanvasLayer"]
 material = ExtResource("4_ko1yg")

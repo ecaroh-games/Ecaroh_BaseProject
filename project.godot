@@ -18,6 +18,7 @@ config/icon="res://ASSETS/ICONS/load.png"
 [autoload]
 
 SceneChanger="*res://scene_changer.gd"
+MusicPlayer="*res://AUTOLOADS/Music/MusicPlayer.tscn"
 
 [layer_names]
 

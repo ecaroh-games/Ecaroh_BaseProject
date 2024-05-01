@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://cc0jbdar2lc2b"
+path="res://.godot/imported/puzzle level.ogg-3d4d31af798bce6742c72a8ee8c86558.oggvorbisstr"
+
+[deps]
+
+source_file="res://ASSETS/MUSIC/puzzle level.ogg"
+dest_files=["res://.godot/imported/puzzle level.ogg-3d4d31af798bce6742c72a8ee8c86558.oggvorbisstr"]
+
+[params]
+
+loop=true
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4

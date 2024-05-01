@@ -15,7 +15,6 @@ load_bar = NodePath("../UI/ParticleLoadingBar")
 [node name="UI" type="CanvasLayer" parent="."]
 
 [node name="ColorRect" type="ColorRect" parent="UI"]
-modulate = Color(1, 1, 1, 0.847059)
 offset_right = 1156.0
 offset_bottom = 651.0
 

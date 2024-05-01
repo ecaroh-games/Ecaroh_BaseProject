@@ -7,6 +7,9 @@ var loading = false
 
 var progress = []
 
+func _ready():
+	MusicPlayer.switch_song(1)
+
 func load_new_scene():
 	pass
 	
