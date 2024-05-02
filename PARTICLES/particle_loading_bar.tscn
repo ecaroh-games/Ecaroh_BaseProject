@@ -1,59 +1,78 @@
-[gd_scene load_steps=8 format=3 uid="uid://d1igd40k7bqhn"]
+[gd_scene load_steps=9 format=3 uid="uid://d1igd40k7bqhn"]
 
 [ext_resource type="Script" path="res://PARTICLES/particle_loading_bar.gd" id="1_mg5as"]
-[ext_resource type="Texture2D" uid="uid://demixoda24rv5" path="res://icon.svg" id="1_vq833"]
+[ext_resource type="Texture2D" uid="uid://b8sah7yuwhrlg" path="res://ASSETS/UI/loading_spin/loading_spin.png" id="2_ehqs0"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_87l05"]
-atlas = ExtResource("1_vq833")
-region = Rect2(32, 32, 32, 32)
+[sub_resource type="AtlasTexture" id="AtlasTexture_kdv1q"]
+atlas = ExtResource("2_ehqs0")
+region = Rect2(0, 0, 30, 30)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_18i4e"]
-atlas = ExtResource("1_vq833")
-region = Rect2(64, 32, 32, 32)
+[sub_resource type="AtlasTexture" id="AtlasTexture_mthvd"]
+atlas = ExtResource("2_ehqs0")
+region = Rect2(30, 0, 30, 30)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_u0wio"]
-atlas = ExtResource("1_vq833")
-region = Rect2(64, 64, 32, 32)
+[sub_resource type="AtlasTexture" id="AtlasTexture_hohad"]
+atlas = ExtResource("2_ehqs0")
+region = Rect2(60, 0, 30, 30)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_cddsd"]
-atlas = ExtResource("1_vq833")
-region = Rect2(32, 64, 32, 32)
+[sub_resource type="AtlasTexture" id="AtlasTexture_aj05x"]
+atlas = ExtResource("2_ehqs0")
+region = Rect2(90, 0, 30, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_70lvo"]
+atlas = ExtResource("2_ehqs0")
+region = Rect2(120, 0, 30, 30)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_3gayx"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_87l05")
+"texture": SubResource("AtlasTexture_kdv1q")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_18i4e")
+"texture": SubResource("AtlasTexture_mthvd")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_u0wio")
+"texture": SubResource("AtlasTexture_hohad")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_cddsd")
+"texture": SubResource("AtlasTexture_aj05x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_70lvo")
 }],
 "loop": true,
 "name": &"default",
-"speed": 60.0
+"speed": 24.0
 }]
 
 [node name="ParticleLoadingBar" type="ProgressBar"]
-offset_right = 167.0
-offset_bottom = 27.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -659.0
+offset_top = -340.0
+offset_right = -492.0
+offset_bottom = -313.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_mg5as")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(83, -26)
+texture_filter = 1
+position = Vector2(83, -36)
+scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_3gayx")
 autoplay = "default"
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 0
-offset_left = 6.0
-offset_top = 29.0
-offset_right = 160.0
-offset_bottom = 52.0
+offset_left = -62.0
+offset_top = 31.0
+offset_right = 229.0
+offset_bottom = 54.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = "Preloading Particles"
+text = "Preloading Particles (laggy)"
+horizontal_alignment = 1

@@ -1,8 +1,0 @@
-[gd_scene load_steps=3 format=3 uid="uid://wpftgei48gqn"]
-
-[ext_resource type="Script" path="res://COMPONENTS/HealthBarComponent/HealthBarComponent.gd" id="1_vju5w"]
-[ext_resource type="PackedScene" uid="uid://ixpg2as2wesf" path="res://COMPONENTS/HealthBarComponent/HeartBase.tscn" id="2_v6er4"]
-
-[node name="HealthBarComponent" type="Node2D"]
-script = ExtResource("1_vju5w")
-myHeart = ExtResource("2_v6er4")

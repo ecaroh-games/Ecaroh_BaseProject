@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="EchoResource" load_steps=2 format=3 uid="uid://crci2d4b7l11x"]
+
+[ext_resource type="Script" path="res://ASSETS/RESOURCES/EchoResource/EchoResource.gd" id="1_noyl6"]
+
+[resource]
+script = ExtResource("1_noyl6")
+duration = 1.0
+start_color = Color(1, 0, 1, 1)

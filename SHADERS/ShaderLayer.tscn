@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=3 uid="uid://chi2cw82he1y3"]
+
+[ext_resource type="Script" path="res://SHADERS/ShaderLayer.gd" id="1_ag7db"]
+[ext_resource type="Shader" path="res://SHADERS/DITHER_SHADER.gdshader" id="1_ml852"]
+[ext_resource type="Texture2D" uid="uid://kk510tprigd2" path="res://SHADERS/palettes/Ecaroh_electric_gradient.tres" id="2_pmgxu"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_axj2p"]
+shader = ExtResource("1_ml852")
+shader_parameter/quantize_size = 2.0
+shader_parameter/handle_scale = false
+shader_parameter/dither_enabled = true
+shader_parameter/bayer_pattern = 3.0
+shader_parameter/divisions = 1.0
+shader_parameter/contrast = 1.0
+shader_parameter/shift = 0.0
+shader_parameter/grayscale = false
+shader_parameter/use_palette = true
+shader_parameter/player_position = null
+shader_parameter/shift_offset = null
+shader_parameter/mixer = 1
+shader_parameter/transition = 1.0
+shader_parameter/palette = ExtResource("2_pmgxu")
+
+[node name="ShaderLayer" type="CanvasLayer"]
+layer = 100
+script = ExtResource("1_ag7db")
+
+[node name="BackBufferCopy" type="BackBufferCopy" parent="."]
+copy_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_axj2p")
+offset_right = 1152.0
+offset_bottom = 648.0
+mouse_filter = 2

@@ -1,4 +1,4 @@
-extends Node2D
+extends Scene
 
 var test_scene_path = "res://SCENES/LOAD_BIG_SCENE/BigScene.tscn"
 @export var load_bar:ProgressBar
@@ -6,9 +6,6 @@ var test_scene_path = "res://SCENES/LOAD_BIG_SCENE/BigScene.tscn"
 var loading = false
 
 var progress = []
-
-func _ready():
-	MusicPlayer.switch_song(1)
 
 func load_new_scene():
 	pass
@@ -20,6 +17,7 @@ func _process(delta):
 		await get_tree().create_timer(0.1).timeout
 		if (ResourceLoader.load_threaded_get_status(test_scene_path) == ResourceLoader.THREAD_LOAD_LOADED):
 			SceneChanger.change_scene(test_scene_path)
+			loading = false
 
 func _on_button_pressed():
 	loading = true

@@ -1,11 +1,36 @@
-[gd_scene load_steps=3 format=3 uid="uid://b7tf3aebetxa7"]
+[gd_scene load_steps=6 format=3 uid="uid://b7tf3aebetxa7"]
 
-[ext_resource type="PackedScene" uid="uid://b13segvvyuifs" path="res://Player/Player.tscn" id="1_pao4k"]
-[ext_resource type="PackedScene" uid="uid://dxq6upak5fu7r" path="res://ENTITIES/ENEMIES/Enemy1/Enemy1.tscn" id="2_x6u5d"]
+[ext_resource type="Script" path="res://SCENES/Main/Game.gd" id="1_02csm"]
+[ext_resource type="PackedScene" uid="uid://b13segvvyuifs" path="res://player/player.tscn" id="1_pao4k"]
+[ext_resource type="PackedScene" uid="uid://dxq6upak5fu7r" path="res://OBJECTS/ENEMIES/Enemy1/Enemy1.tscn" id="2_x6u5d"]
+[ext_resource type="PackedScene" uid="uid://d0nsv4jokegtb" path="res://UTILITIES/TOOLS/echo/echo_spawner.tscn" id="3_8ljgq"]
+[ext_resource type="PackedScene" uid="uid://chi2cw82he1y3" path="res://SHADERS/ShaderLayer.tscn" id="4_eb3f6"]
 
 [node name="GAME" type="Node2D"]
+script = ExtResource("1_02csm")
 
-[node name="Player" parent="." instance=ExtResource("1_pao4k")]
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -1
 
-[node name="Enemy1" parent="." instance=ExtResource("2_x6u5d")]
+[node name="Enemy1" parent="CanvasLayer" instance=ExtResource("2_x6u5d")]
 position = Vector2(541, 265)
+
+[node name="ShaderLayer" parent="." instance=ExtResource("4_eb3f6")]
+layer = 0
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="."]
+
+[node name="EchoSpawner" parent="CanvasLayer2" instance=ExtResource("3_8ljgq")]
+
+[node name="Player" parent="CanvasLayer2" instance=ExtResource("1_pao4k")]
+position = Vector2(213, 184)
+
+[node name="Button" type="Button" parent="CanvasLayer2"]
+offset_left = 951.0
+offset_top = 542.0
+offset_right = 1126.0
+offset_bottom = 625.0
+text = "load next scene"
+
+[connection signal="emit_echo" from="CanvasLayer2/Player" to="CanvasLayer2/EchoSpawner" method="spawn_echo"]
+[connection signal="pressed" from="CanvasLayer2/Button" to="." method="_on_button_pressed"]

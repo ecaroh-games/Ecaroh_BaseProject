@@ -1,0 +1,35 @@
+[gd_scene load_steps=8 format=3 uid="uid://dxq6upak5fu7r"]
+
+[ext_resource type="Texture2D" uid="uid://dynbyofceqhvo" path="res://ASSETS/ICONS/bat.png" id="1_dgkmx"]
+[ext_resource type="Script" path="res://OBJECTS/ENEMIES/Enemy1/Enemy1.gd" id="1_xu1aq"]
+[ext_resource type="PackedScene" uid="uid://cxl2ibjykfdtb" path="res://UTILITIES/COMPONENTS/HitboxHurtbox/Hurtbox.tscn" id="2_clulf"]
+[ext_resource type="PackedScene" uid="uid://dwnxyybho2foh" path="res://UTILITIES/COMPONENTS/FlashFrames/flash_frames.tscn" id="2_gpt2v"]
+[ext_resource type="PackedScene" uid="uid://447y2kvjhhfm" path="res://UTILITIES/COMPONENTS/HealthComponent/HealthComponent.tscn" id="4_k2wsy"]
+[ext_resource type="PackedScene" uid="uid://wpftgei48gqn" path="res://UTILITIES/COMPONENTS/HealthBarComponent/HealthBarComponent.tscn" id="5_s45by"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7qkgo"]
+
+[node name="Enemy1" type="CharacterBody2D"]
+script = ExtResource("1_xu1aq")
+
+[node name="FlashFrames" parent="." node_paths=PackedStringArray("flashSprite") instance=ExtResource("2_gpt2v")]
+flashSprite = NodePath("../Sprite2D")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_dgkmx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_7qkgo")
+
+[node name="Hurtbox" parent="." instance=ExtResource("2_clulf")]
+
+[node name="HealthComponent" parent="." instance=ExtResource("4_k2wsy")]
+hp = 12
+
+[node name="HealthBarComponent" parent="." instance=ExtResource("5_s45by")]
+
+[connection signal="got_hit" from="Hurtbox" to="FlashFrames" method="_on_hurtbox_got_hit"]
+[connection signal="got_hit" from="Hurtbox" to="HealthComponent" method="_on_hurtbox_got_hit"]
+[connection signal="died" from="HealthComponent" to="." method="_on_health_component_died"]
+[connection signal="hp_changed" from="HealthComponent" to="HealthBarComponent" method="_on_health_component_hp_changed"]
+[connection signal="hp_set" from="HealthComponent" to="HealthBarComponent" method="_on_health_component_hp_set"]

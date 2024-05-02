@@ -11,14 +11,42 @@ config_version=5
 [application]
 
 config/name="BaseProject"
-run/main_scene="res://SCENES/LoadScreen/LoadScreen.tscn"
+run/main_scene="res://SCENES/Main/Game.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 config/icon="res://ASSETS/ICONS/load.png"
 
 [autoload]
 
-SceneChanger="*res://scene_changer.gd"
-MusicPlayer="*res://AUTOLOADS/Music/MusicPlayer.tscn"
+SceneChanger="*res://UTILITIES/AUTOLOADS/SceneChanger/scene_changer.gd"
+MusicPlayer="*res://UTILITIES/AUTOLOADS/Music/MusicPlayer.tscn"
+ScoreSaver="*res://UTILITIES/TOOLS/highscore/SCORESAVER.gd"
+LeaderboardLootLocker="*res://UTILITIES/TOOLS/highscore/LEADERBOARD_LootLocker.gd"
+
+[display]
+
+window/size/always_on_top=true
+
+[file_customization]
+
+folder_colors={
+"res://ASSETS/": "teal",
+"res://ASSETS/LIGHTS/": "yellow",
+"res://ASSETS/SFX/": "orange",
+"res://ASSETS/SPRITES/": "purple",
+"res://OBJECTS/": "purple",
+"res://SCENES/": "orange",
+"res://SCENES/Main/": "red",
+"res://UTILITIES/": "yellow",
+"res://player/": "pink"
+}
+
+[input]
+
+debug_music={
+"deadzone": 0.5,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":49,"key_label":0,"unicode":49,"echo":false,"script":null)
+]
+}
 
 [layer_names]
 

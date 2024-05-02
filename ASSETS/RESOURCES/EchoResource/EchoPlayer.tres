@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="EchoResource" load_steps=2 format=3 uid="uid://bbdjqk64qfvit"]
+
+[ext_resource type="Script" path="res://ASSETS/RESOURCES/EchoResource/EchoResource.gd" id="1_om2lt"]
+
+[resource]
+script = ExtResource("1_om2lt")
+duration = 2.0

@@ -1,19 +1,102 @@
-[gd_scene load_steps=6 format=3 uid="uid://b13segvvyuifs"]
+[gd_scene load_steps=18 format=3 uid="uid://b13segvvyuifs"]
 
-[ext_resource type="Script" path="res://Player/Player.gd" id="1_iyxcx"]
-[ext_resource type="Texture2D" uid="uid://b66bh8xvv3wug" path="res://ASSETS/ICONS/ecaroh_icon3.png" id="2_tt1i1"]
-[ext_resource type="PackedScene" uid="uid://cxl2ibjykfdtb" path="res://COMPONENTS/HitboxHurtbox/Hurtbox.tscn" id="3_rp85m"]
-[ext_resource type="PackedScene" uid="uid://dnt0bg1kjmh46" path="res://COMPONENTS/HitboxHurtbox/Hitbox_Attack.tscn" id="4_ahl1x"]
+[ext_resource type="Script" path="res://player/player.gd" id="1_iyxcx"]
+[ext_resource type="Resource" uid="uid://bbdjqk64qfvit" path="res://ASSETS/RESOURCES/EchoResource/EchoPlayer.tres" id="2_2364q"]
+[ext_resource type="PackedScene" uid="uid://cxl2ibjykfdtb" path="res://UTILITIES/COMPONENTS/HitboxHurtbox/Hurtbox.tscn" id="3_rp85m"]
+[ext_resource type="PackedScene" uid="uid://dnt0bg1kjmh46" path="res://UTILITIES/COMPONENTS/HitboxHurtbox/Hitbox_Attack.tscn" id="4_ahl1x"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_sd6ov"]
+load_path = "res://.godot/imported/ecaroh_icon3.png-de649e49015dc933e2117c2e450d2623.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5mbpa"]
+atlas = SubResource("CompressedTexture2D_sd6ov")
+region = Rect2(18, 0, 18, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jrhtd"]
+atlas = SubResource("CompressedTexture2D_sd6ov")
+region = Rect2(36, 0, 18, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ouc54"]
+atlas = SubResource("CompressedTexture2D_sd6ov")
+region = Rect2(18, 18, 18, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uicsd"]
+atlas = SubResource("CompressedTexture2D_sd6ov")
+region = Rect2(36, 18, 18, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sn0t4"]
+atlas = SubResource("CompressedTexture2D_sd6ov")
+region = Rect2(0, 36, 18, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2v2ci"]
+atlas = SubResource("CompressedTexture2D_sd6ov")
+region = Rect2(18, 36, 18, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0ch03"]
+atlas = SubResource("CompressedTexture2D_sd6ov")
+region = Rect2(36, 36, 18, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nehp3"]
+atlas = SubResource("CompressedTexture2D_sd6ov")
+region = Rect2(54, 36, 18, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qa1gs"]
+atlas = SubResource("CompressedTexture2D_sd6ov")
+region = Rect2(18, 54, 18, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qllan"]
+atlas = SubResource("CompressedTexture2D_sd6ov")
+region = Rect2(36, 54, 18, 18)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_s4inv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5mbpa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jrhtd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ouc54")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uicsd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sn0t4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2v2ci")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0ch03")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nehp3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qa1gs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qllan")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_oo8pc"]
 radius = 23.0
 
 [node name="Player" type="Node2D"]
 script = ExtResource("1_iyxcx")
+echo = ExtResource("2_2364q")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_tt1i1")
-offset = Vector2(0, -13)
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_s4inv")
+autoplay = "default"
+frame_progress = 0.127042
 
 [node name="Hurtbox" parent="." instance=ExtResource("3_rp85m")]
 
@@ -23,7 +106,12 @@ shape = SubResource("CircleShape2D_oo8pc")
 [node name="Hitbox" parent="." instance=ExtResource("4_ahl1x")]
 permanent = true
 
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.023
+autostart = true
+
 [connection signal="hit_target" from="Hitbox" to="." method="_on_hitbox_hit_target"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 
 [editable path="Hurtbox"]
 [editable path="Hitbox"]
