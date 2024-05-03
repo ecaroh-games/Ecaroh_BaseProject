@@ -18,19 +18,19 @@ func _on_health_component_hp_changed(ratio):
 	pass # Replace with function body.
 
 
-func _on_health_component_hp_set(max_hp):
-	create_bar(max_hp)
+func _on_health_component_hp_set(max_hp_set:int):
+	create_bar(max_hp_set)
 	pass # Replace with function body.
 
 
-func create_bar(max:int):
-	max_hp = max
+func create_bar(max_hp_set:int):
+	max_hp = max_hp_set
 	
 	for old in hp_bar:
 		old.queue_free()
 		
 	hp_bar = []
-	for i in max:
+	for i in max_hp:
 		var hp = myHeart.instantiate()
 		add_child(hp)	
 		hp.position.x = spacing * i
@@ -38,4 +38,4 @@ func create_bar(max:int):
 		hp_bar.append(hp)
 	
 	position.y = - 23
-	position.x = - 0.5 * (spacing * max)
+	position.x = - 0.5 * (spacing * max_hp)

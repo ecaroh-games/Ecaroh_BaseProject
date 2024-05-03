@@ -36,7 +36,7 @@ func switch_song(new_song:int, fade_time := 1.23):
 		songs[current_song].stop()
 		current_song = new_song
 
-func _input(event):
+func _input(_event):
 	if Input.is_action_just_pressed("debug_music"):
 		if current_song == 1:
 			switch_song(2)

@@ -54,6 +54,6 @@ func stop_flash() -> void:
 		$Timer.stop()
 
 
-func _on_hurtbox_got_hit(source):
+func _on_hurtbox_got_hit(_source):
 	flash(0.23, 6)
 	pass # Replace with function body.

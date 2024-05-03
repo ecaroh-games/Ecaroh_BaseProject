@@ -1,17 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://dqxtvkal58lbj"]
+[gd_scene load_steps=3 format=3 uid="uid://dqxtvkal58lbj"]
 
 [ext_resource type="Script" path="res://SCENES/LoadScreen/LoadScreen.gd" id="1_cox2e"]
-[ext_resource type="Script" path="res://PARTICLES/particle_cache.gd" id="2_sjhh4"]
-[ext_resource type="PackedScene" uid="uid://d1igd40k7bqhn" path="res://PARTICLES/particle_loading_bar.tscn" id="3_6qfty"]
 [ext_resource type="PackedScene" uid="uid://chi2cw82he1y3" path="res://SHADERS/ShaderLayer.tscn" id="4_ogy6t"]
 
 [node name="LoadScreen" type="Node2D" node_paths=PackedStringArray("load_bar")]
 script = ExtResource("1_cox2e")
 load_bar = NodePath("UI/NextSceneLoadingBar")
-
-[node name="ParticleCache" type="CanvasLayer" parent="." node_paths=PackedStringArray("load_bar")]
-script = ExtResource("2_sjhh4")
-load_bar = NodePath("../UI/ParticleLoadingBar")
 
 [node name="UI" type="CanvasLayer" parent="."]
 
@@ -32,15 +26,23 @@ offset_top = 227.0
 offset_right = 869.0
 offset_bottom = 274.0
 
-[node name="ParticleLoadingBar" parent="UI" instance=ExtResource("3_6qfty")]
-offset_left = -90.0
-offset_top = -170.0
-offset_right = 77.0
-offset_bottom = -143.0
+[node name="Button2" type="Button" parent="UI"]
+offset_left = 72.0
+offset_top = 43.0
+offset_right = 231.0
+offset_bottom = 124.0
+text = "add 3"
 
 [node name="ShaderLayer" parent="." instance=ExtResource("4_ogy6t")]
 layer = 6
 
+[node name="BackBufferCopy" parent="ShaderLayer" index="0"]
+metadata/_edit_lock_ = true
+
+[node name="ColorRect" parent="ShaderLayer" index="1"]
+metadata/_edit_lock_ = true
+
 [connection signal="pressed" from="UI/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="UI/Button2" to="." method="_on_button_2_pressed"]
 
 [editable path="ShaderLayer"]

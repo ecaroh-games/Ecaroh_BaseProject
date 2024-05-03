@@ -19,8 +19,9 @@ config/icon="res://ASSETS/ICONS/load.png"
 
 SceneChanger="*res://UTILITIES/AUTOLOADS/SceneChanger/scene_changer.gd"
 MusicPlayer="*res://UTILITIES/AUTOLOADS/Music/MusicPlayer.tscn"
-ScoreSaver="*res://UTILITIES/TOOLS/highscore/SCORESAVER.gd"
-LeaderboardLootLocker="*res://UTILITIES/TOOLS/highscore/LEADERBOARD_LootLocker.gd"
+CameraShake="*res://UTILITIES/AUTOLOADS/camera_shake.gd"
+ParticleCache="*res://UTILITIES/AUTOLOADS/ParticleCache/particle_cache.gd"
+PreloadBar="*res://UTILITIES/AUTOLOADS/PreloadBar/PreloadBar.tscn"
 
 [display]
 

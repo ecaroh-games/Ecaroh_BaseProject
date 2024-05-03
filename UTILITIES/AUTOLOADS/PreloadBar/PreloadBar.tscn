@@ -1,26 +1,26 @@
 [gd_scene load_steps=9 format=3 uid="uid://d1igd40k7bqhn"]
 
-[ext_resource type="Script" path="res://PARTICLES/particle_loading_bar.gd" id="1_mg5as"]
-[ext_resource type="Texture2D" uid="uid://b8sah7yuwhrlg" path="res://ASSETS/UI/loading_spin/loading_spin.png" id="2_ehqs0"]
+[ext_resource type="Script" path="res://UTILITIES/AUTOLOADS/PreloadBar/preload_bar.gd" id="1_skmfs"]
+[ext_resource type="Texture2D" uid="uid://b8sah7yuwhrlg" path="res://ASSETS/UI/loading_spin/loading_spin.png" id="2_3ohfx"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kdv1q"]
-atlas = ExtResource("2_ehqs0")
+atlas = ExtResource("2_3ohfx")
 region = Rect2(0, 0, 30, 30)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mthvd"]
-atlas = ExtResource("2_ehqs0")
+atlas = ExtResource("2_3ohfx")
 region = Rect2(30, 0, 30, 30)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hohad"]
-atlas = ExtResource("2_ehqs0")
+atlas = ExtResource("2_3ohfx")
 region = Rect2(60, 0, 30, 30)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_aj05x"]
-atlas = ExtResource("2_ehqs0")
+atlas = ExtResource("2_3ohfx")
 region = Rect2(90, 0, 30, 30)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_70lvo"]
-atlas = ExtResource("2_ehqs0")
+atlas = ExtResource("2_3ohfx")
 region = Rect2(120, 0, 30, 30)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_3gayx"]
@@ -46,33 +46,50 @@ animations = [{
 "speed": 24.0
 }]
 
-[node name="ParticleLoadingBar" type="ProgressBar"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -659.0
-offset_top = -340.0
-offset_right = -492.0
-offset_bottom = -313.0
-grow_horizontal = 2
-grow_vertical = 2
-script = ExtResource("1_mg5as")
+[node name="LoadBarOverlay" type="CanvasLayer"]
+layer = 128
+script = ExtResource("1_skmfs")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
-position = Vector2(83, -36)
+position = Vector2(1033, 545)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_3gayx")
 autoplay = "default"
 
 [node name="Label" type="Label" parent="."]
-layout_mode = 0
-offset_left = -62.0
-offset_top = 31.0
-offset_right = 229.0
-offset_bottom = 54.0
+offset_left = 888.0
+offset_top = 612.0
+offset_right = 1179.0
+offset_bottom = 635.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Preloading Particles (laggy)"
 horizontal_alignment = 1
+
+[node name="ProgressBarTotal" type="ProgressBar" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 374.0
+offset_top = 257.0
+offset_right = 541.0
+offset_bottom = 265.0
+grow_horizontal = 2
+grow_vertical = 2
+show_percentage = false
+
+[node name="ProgressBarSmall" type="ProgressBar" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 374.0
+offset_top = 266.0
+offset_right = 541.0
+offset_bottom = 284.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 10

@@ -9,21 +9,24 @@
 [node name="GAME" type="Node2D"]
 script = ExtResource("1_02csm")
 
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(541, 265)
+
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = -1
+follow_viewport_enabled = true
 
 [node name="Enemy1" parent="CanvasLayer" instance=ExtResource("2_x6u5d")]
 position = Vector2(541, 265)
+
+[node name="Player" parent="CanvasLayer" instance=ExtResource("1_pao4k")]
+
+[node name="EchoSpawner" parent="CanvasLayer" instance=ExtResource("3_8ljgq")]
 
 [node name="ShaderLayer" parent="." instance=ExtResource("4_eb3f6")]
 layer = 0
 
 [node name="CanvasLayer2" type="CanvasLayer" parent="."]
-
-[node name="EchoSpawner" parent="CanvasLayer2" instance=ExtResource("3_8ljgq")]
-
-[node name="Player" parent="CanvasLayer2" instance=ExtResource("1_pao4k")]
-position = Vector2(213, 184)
 
 [node name="Button" type="Button" parent="CanvasLayer2"]
 offset_left = 951.0
@@ -32,5 +35,5 @@ offset_right = 1126.0
 offset_bottom = 625.0
 text = "load next scene"
 
-[connection signal="emit_echo" from="CanvasLayer2/Player" to="CanvasLayer2/EchoSpawner" method="spawn_echo"]
+[connection signal="emit_echo" from="CanvasLayer/Player" to="CanvasLayer/EchoSpawner" method="spawn_echo"]
 [connection signal="pressed" from="CanvasLayer2/Button" to="." method="_on_button_pressed"]

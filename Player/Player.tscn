@@ -99,6 +99,7 @@ autoplay = "default"
 frame_progress = 0.127042
 
 [node name="Hurtbox" parent="." instance=ExtResource("3_rp85m")]
+collision_layer = 1024
 
 [node name="CollisionShape2D" parent="Hurtbox" index="0"]
 shape = SubResource("CircleShape2D_oo8pc")

@@ -7,12 +7,13 @@ class_name Player extends Node2D
 @export var echo:EchoResource
 signal emit_echo()
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	position = get_global_mouse_position()
 
 
-func _on_hitbox_hit_target(target_area):
+func _on_hitbox_hit_target(_target_area):
 	print("hit")
+	CameraShake.shake()
 	pass # Replace with function body.
 
 
