@@ -4,6 +4,9 @@ extends CanvasLayer
 @onready var progress_bar_small = $ProgressBarSmall as ProgressBar
 @onready var message = $Label as Label
 
+func _ready():
+	visible = false
+
 func set_message(msg:String):
 	message.text = msg
 	

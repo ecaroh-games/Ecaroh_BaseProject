@@ -30,6 +30,6 @@ copy_mode = 2
 
 [node name="ColorRect" type="ColorRect" parent="."]
 material = SubResource("ShaderMaterial_axj2p")
-offset_right = 1152.0
-offset_bottom = 648.0
+offset_right = 800.0
+offset_bottom = 450.0
 mouse_filter = 2
