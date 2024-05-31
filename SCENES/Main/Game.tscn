@@ -12,6 +12,7 @@ script = ExtResource("1_02csm")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(400, 225)
+zoom = Vector2(1.395, 1.395)
 
 [node name="GAME" type="CanvasLayer" parent="."]
 layer = -1
@@ -45,3 +46,5 @@ layer = 128
 
 [connection signal="emit_echo" from="GAME/Player" to="GAME/EchoSpawner" method="spawn_echo"]
 [connection signal="pressed" from="UI/Button" to="." method="_on_button_pressed"]
+
+[editable path="ShaderLayer"]

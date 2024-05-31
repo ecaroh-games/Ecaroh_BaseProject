@@ -1,8 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://chi2cw82he1y3"]
+[gd_scene load_steps=9 format=3 uid="uid://chi2cw82he1y3"]
 
 [ext_resource type="Script" path="res://SHADERS/ShaderLayer.gd" id="1_ag7db"]
 [ext_resource type="Shader" path="res://SHADERS/DITHER_SHADER.gdshader" id="1_ml852"]
 [ext_resource type="Texture2D" uid="uid://kk510tprigd2" path="res://SHADERS/palettes/Ecaroh_electric_gradient.tres" id="2_pmgxu"]
+[ext_resource type="Shader" path="res://SHADERS/ColorPaletteLerper.gdshader" id="4_8p1ft"]
+[ext_resource type="Texture2D" uid="uid://baealhnavspe8" path="res://SHADERS/palettes/nes_wiki.png" id="6_0rnk6"]
+[ext_resource type="Texture2D" uid="uid://bsuk5tjpiqcwk" path="res://SHADERS/palettes/nes-wikipedia-1x.png" id="6_ac81v"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_axj2p"]
 shader = ExtResource("1_ml852")
@@ -21,6 +24,12 @@ shader_parameter/mixer = 1
 shader_parameter/transition = 1.0
 shader_parameter/palette = ExtResource("2_pmgxu")
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lu377"]
+shader = ExtResource("4_8p1ft")
+shader_parameter/lerper = 1.0
+shader_parameter/pal0 = ExtResource("6_ac81v")
+shader_parameter/pal1 = ExtResource("6_0rnk6")
+
 [node name="ShaderLayer" type="CanvasLayer"]
 layer = 100
 script = ExtResource("1_ag7db")
@@ -29,7 +38,14 @@ script = ExtResource("1_ag7db")
 copy_mode = 2
 
 [node name="ColorRect" type="ColorRect" parent="."]
+visible = false
 material = SubResource("ShaderMaterial_axj2p")
+offset_right = 800.0
+offset_bottom = 450.0
+mouse_filter = 2
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_lu377")
 offset_right = 800.0
 offset_bottom = 450.0
 mouse_filter = 2

@@ -78,6 +78,7 @@ bloom = NodePath("post_bloom")
 
 [node name="dithering" type="CanvasLayer" parent="."]
 layer = 99
+visible = false
 
 [node name="dither" type="ColorRect" parent="dithering"]
 material = SubResource("ShaderMaterial_vcmfx")
@@ -90,6 +91,7 @@ mouse_filter = 2
 
 [node name="preblur_x" type="CanvasLayer" parent="."]
 layer = 100
+visible = false
 
 [node name="x_blur" type="ColorRect" parent="preblur_x"]
 visible = false
@@ -105,6 +107,7 @@ mouse_filter = 2
 
 [node name="preblur_y" type="CanvasLayer" parent="."]
 layer = 100
+visible = false
 
 [node name="y_blur" type="ColorRect" parent="preblur_y"]
 visible = false
@@ -120,6 +123,7 @@ mouse_filter = 2
 
 [node name="CRT" type="CanvasLayer" parent="."]
 layer = 102
+visible = false
 
 [node name="crt_shader" type="ColorRect" parent="CRT"]
 material = SubResource("ShaderMaterial_pli6x")
@@ -132,6 +136,7 @@ mouse_filter = 2
 
 [node name="post_bloom" type="CanvasLayer" parent="."]
 layer = 103
+visible = false
 
 [node name="bloom" type="ColorRect" parent="post_bloom"]
 material = SubResource("ShaderMaterial_pilqa")
